@@ -1,5 +1,7 @@
 const restify = require("restify");
 
+const pingController = require("./src/controllers/pingController");
+
 const server = restify.createServer({
   name: "ping-api",
   version: "1.0.0"
@@ -13,6 +15,8 @@ server.get("/echo/:name", function(req, res, next) {
   res.send(req.params);
   return next();
 });
+
+pingController(server);
 
 server.listen(8080, function() {
   console.log("%s listening at %s", server.name, server.url);
