@@ -11,11 +11,6 @@ server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
 
-server.get("/echo/:name", function(req, res, next) {
-  res.send(req.params);
-  return next();
-});
-
 pingController(server);
 
 server.listen(8080, function() {
